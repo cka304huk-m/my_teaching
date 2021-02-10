@@ -4,7 +4,11 @@ def main():
     """Функция для передачи всех параметров."""
     numbers = input_number()
     g_list = gen_list(numbers)
-    prime_сomposite_numbers(numbers, g_list)
+    prime, composite = prime_сomposite_numbers(g_list)
+    print('Простые числа: ', end='')
+    print(prime)
+    print('Составные числа: ', end ='')
+    print(composite)
 
 def input_number():
     """Просит пользователя ввести число больше 1"""
@@ -29,32 +33,33 @@ def gen_list(num):
 
     return gen_list_
 
-def prime_сomposite_numbers(n, list_num):
+def prime_сomposite_numbers(list_num):
     """Проверка списка на простые и составные числа"""
+
+    # Список составных чисел.
     composite_numbers = []
+
+    # Список простых чисел.
     prime_numbers = []
-    l_num = list_num
 
-    while len(l_num) != 0:
-        print(l_num)
-        for numb in l_num:
-            if numb == 2:
-                prime_numbers.append(numb)
-                l_num.remove(numb)
-            elif numb % 2 == 0:
-                composite_numbers.append(numb)
-                l_num.remove(numb)
-            elif numb % 3 == 0:
-                composite_numbers.append(numb)
-                l_num.remove(numb)
-            else:
-                prime_numbers.append(numb)
-                l_num.remove(numb)
+    # Переменная для подсчёта множителей.
+    count = 0
 
-    print('Простые числа:')
-    print(sorted(prime_numbers))
-    print('Составные числа:')
-    print(sorted(composite_numbers))
+    # Перебираю числа в списке.
+    for num in list_num:
+        # Перебираю числа от 2 до текущего числа.
+        for n in range(2, num):
+            if num % n == 0:
+                count += 1
+
+        if count == 0:
+            prime_numbers.append(num)
+        else:
+            count = 0
+            composite_numbers.append(num)
+
+    # Вовзаращаю списки с числами.
+    return prime_numbers, composite_numbers
 
 main()
 
