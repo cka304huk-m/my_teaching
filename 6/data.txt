@@ -1,0 +1,6 @@
+To select more than one row in the data view,
+click one row, then hold the Control (Windows)
+or Command (Mac) key and select each of the other
+rows you wish to edit or remove. To select a continuous
+list, click one row, then hold the Shift key and click
+the last row.
