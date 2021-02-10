@@ -58,7 +58,7 @@ def prime_сomposite_numbers(list_num):
             count = 0
             composite_numbers.append(num)
 
-    # Вовзаращаю списки с числами.
+    # Возвращаю списки с числами.
     return prime_numbers, composite_numbers
 
 main()
