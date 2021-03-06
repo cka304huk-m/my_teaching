@@ -10,7 +10,6 @@ def main():
 
     course_input = input('Номер курса: ')
 
-
     if course_input in d1:
         info += 'Аудитория №: ' + d1[course_input] + '\n'
 
