@@ -1,6 +1,12 @@
-import employee, pickle
+import pickle
+from employee import Employee
+
 def main():
+    # Данные которые доступны после закрытия программы.
     filename = 'save_employees.dat'
+
+    # Читает сохраненый файл, если его нет, возращает пустой
+    # Словарь.
     dict_employees = empty_dict(filename)
 
     menu(dict_employees, filename)
@@ -32,8 +38,7 @@ def menu(dict_employees, filename):
     save_employees(dict_employees, filename)
 
 def empty_dict(filename):
-    """Пустой словарь для сохранения
-    информации."""
+    """Возвращаю данные из словаря"""
     try:
         with open(filename, 'rb') as input_file:
             my_data = pickle.load(input_file)
@@ -64,18 +69,16 @@ def add_employee(dict_employees, filename):
     id = input('Идентификационный номер: ')
 
     if id not in dict_employees:
-
         name = input('Имя: ')
         id = input('ИД: ')
         division = input('Отдел: ')
         function = input('Должность: ')
-        new_employee = employee.Employee(name, id, division, function)
+        new_employee = Employee(name, id, division, function)
         dict_employees[id] = []
         dict_employees[id].append(new_employee.get_name())
         dict_employees[id].append(new_employee.get_division())
         dict_employees[id].append(new_employee.get_function())
         save_employees(dict_employees, filename)
-
     else:
         print('Уже есть сотрудник под этим номером, выберите другой.\n')
 
@@ -89,7 +92,7 @@ def edit_employee(dict_employees, filename):
         name = input('Имя: ')
         division = input('Отдел: ')
         function = input('Должность: ')
-        edit_empl = employee.Employee(name, id, division, function)
+        edit_empl = Employee(name, id, division, function)
         dict_employees[id][0] = edit_empl.get_name()
         dict_employees[id][1] = edit_empl.get_division()
         dict_employees[id][2] = edit_empl.get_function()
