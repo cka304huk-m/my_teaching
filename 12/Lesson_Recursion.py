@@ -11,7 +11,7 @@ def sum(x):
     elif x == 1:
         return 1
     else:
-        return  x + sum(x - 1)
+        return x + sum(x - 1)
 
 
 def factorial(x):
